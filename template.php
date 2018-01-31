@@ -18,6 +18,9 @@
     </form>
 
     <?php
+
+    # $result = preg_grep( "/[-]*((\d)+[.|,]*(\d)*)(?=(\s)*)/g" , $input);
+    
     if (isset($_POST['choix_tri'])){
         switch ($_POST['choix_tri']) {
             case 'tri_par_selection':
