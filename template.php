@@ -3,37 +3,39 @@
 <head>
     <meta charset="utf-8" />
     <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class = "cadre">
-    <form method="post">
-        Choisissez le type de tri : </br>
-        <select name="choix_tri">
-            <option value="tri_par_selection">Tri par selection</option>
-            <option value="tri_par_insertion">Tri par insertion</option>
-            <option value="tri_a_bulles">Tri à bulles</option>
-    
-        </select><br/>
-        <input type="submit" name="submit"/>
-    </form>
+    <div class="cadre">
+        <div class="title">
+            <h1>ALGORYTHMIE</h1>
+        </div>
+        <form name="sorting" method="POST">
+            <p>Choisissez le type de tri :
+                <select name="sort">
+                    <option value="selection">Tri par selection</option>
+                    <option value="insertion">Tri par insertion</option>
+                    <option value="tri_a_bulles">Tri à bulles</option>
+                </select>
+            </p>
+            <p>insérez les valeurs séparées par des espaces: </p>
+            <input name="values">
+            <input type="submit"/>
+        </form>
 
-    <?php
-
-    # $result = preg_grep( "/[-]*((\d)+[.|,]*(\d)*)(?=(\s)*)/g" , $input);
-    
-    if (isset($_POST['choix_tri'])){
-        switch ($_POST['choix_tri']) {
-            case 'tri_par_selection':
-                echo "Vous avez choisi le tri par selection :";
-                break;
-            case 'tri_par_insertion' :
-                echo "Vous avez choisi le tri par insertion :";
-                break;
-            case 'tri_a_bulles' :
-                echo "Vous avez choisi le tri à bulles :";
-                break;
-        }
-    }
-    ?>
-</body>
-</html>
+        <?php
+        if (isset($result)) {
+            echo "<p><span> Sorted in " . $result->diff . " seconds</span>,";
+            echo "<span> number of iterations: " . $result->iterations . "</span></p>";
+            echo "<p> Result: </p>";
+            echo "<p class='result'>";
+            if (!empty($result->result))
+                foreach ($result->result as $value) {
+                    echo " " . $value . " ";
+                }
+                echo "</p>";
+            }
+            ?>
+        </div>
+    </body>
+    </html>
