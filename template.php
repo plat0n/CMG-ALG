@@ -15,7 +15,9 @@
                 <select name="sort">
                     <option value="selection">Tri par selection</option>
                     <option value="insertion">Tri par insertion</option>
-                    <option value="tri_a_bulles">Tri à bulles</option>
+                    <option value="bubble">Tri à bulles</option>
+                    <option value="quick">Tri rapide</option>
+                    <option value="shell">Tri Shell</option>
                 </select>
             </p>
             <p>insérez les valeurs séparées par des espaces: </p>

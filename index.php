@@ -112,6 +112,31 @@ function shellSort($array)
     }
 }
 
+function quickSort($array)
+{
+	$low = array();
+	$grt = array();
+	if(count($array) < 2)
+	{
+		return $array;
+	}
+	$pkey = key($array);
+	$p = array_shift($array);
+	foreach ($array as $value) 
+	{
+		if($value <= $p)
+		{
+			$low[] = $value;
+		}
+		elseif($val > $p)
+		{
+			$grt = $value;
+		}
+	}
+	return array_merge(quickSort($low), array($pkey=>$p), quicksort($grt));
+}
+
+
 
 if (isset($_POST["sort"])) {
 	$input = preg_split("/\s+/", $_POST["values"]);
@@ -129,6 +154,9 @@ if (isset($_POST["sort"])) {
 			break;
 		case 'shell':
 			$sort = shellSort($input);
+			break;
+		case 'quick':
+			$sort = quickSort($input);
 			break;
 	}
 
