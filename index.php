@@ -136,6 +136,44 @@ function quickSort($array)
 	return array_merge(quickSort($low), array($pkey=>$p), quicksort($grt));
 }
 
+function fusionSort($array)
+{
+	$cou = count($array);
+	if ($cou == 1) 
+		return $array;
+	$cen = $cou / 2;
+	$first = array_slice($array, 0, $cen);
+	$second = array_slice($array, $cen);
+	$first = fusionSort($first);
+	$second = fusionSort($second);
+	return fusion($first, $second);
+}
+
+function fusion($first, $second)
+{
+	$end = array();
+	while (count($first) > 0 && count($second) > 0) {
+		if ($first[0] > $second[0]) {
+			$end[] = $second[0];
+			$second  array_slice($second, 1);
+		}
+		else {
+			$end[] = $first[0];
+			$first = array_slice($first, 1);
+		}
+	}
+	while (count($first) > 0) {
+		$end[] = $first[0];
+		$first = array_slice($first, 1);
+	}
+	while (count($second) > 0) {
+		$end[] = $second[0];
+		$second  array_slice($second, 1);
+	}
+	return $res;
+}
+
+
 
 
 if (isset($_POST["sort"])) {
@@ -157,6 +195,9 @@ if (isset($_POST["sort"])) {
 			break;
 		case 'quick':
 			$sort = quickSort($input);
+			break;
+		case 'fusion':
+			$sort = fusionSort($input);
 			break;
 	}
 

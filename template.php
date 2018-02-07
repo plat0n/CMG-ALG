@@ -18,6 +18,7 @@
                     <option value="bubble">Tri à bulles</option>
                     <option value="quick">Tri rapide</option>
                     <option value="shell">Tri Shell</option>
+                    <option value="fusion">Tri fusion</option>
                 </select>
             </p>
             <p>insérez les valeurs séparées par des espaces: </p>
