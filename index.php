@@ -91,6 +91,27 @@ function insertionSort($array)
 	return ["iterations" => $it, "array" => $array];
 }
 
+function shellSort($array) 
+{
+	$cou = count($array)
+    $int = round($cou/2);
+    while($int > 0)
+    {
+	    for ($i = $int; $i < $cou; $i++) 
+	    {
+	    	$tmp = $array[$i];
+	    	$j = $i;
+	    	while($j >= $int && $array[$j-$int] > $tmp)
+	    	{
+	    		$array[$j] = $array[$j - $int];
+	    		$j -= $int;
+	    	}
+	    	$array[$j] = $tmp;
+        }
+        $int = round($int/2.3);
+    }
+}
+
 
 if (isset($_POST["sort"])) {
 	$input = preg_split("/\s+/", $_POST["values"]);
@@ -105,6 +126,9 @@ if (isset($_POST["sort"])) {
 			break;
 		case 'insertion':
 			$sort = insertionSort($input);
+			break;
+		case 'shell':
+			$sort = shellSort($input);
 			break;
 	}
 
