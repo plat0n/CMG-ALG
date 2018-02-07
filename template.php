@@ -19,6 +19,7 @@
                     <option value="quick">Tri rapide</option>
                     <option value="shell">Tri Shell</option>
                     <option value="fusion">Tri fusion</option>
+                    <option value="comb">Tri a peigne</option>
                 </select>
             </p>
             <p>insérez les valeurs séparées par des espaces: </p>

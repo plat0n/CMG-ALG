@@ -95,6 +95,7 @@ function shellSort($array)
 {
 	$cou = count($array)
     $int = round($cou/2);
+    $it = 0;
     while($int > 0)
     {
 	    for ($i = $int; $i < $cou; $i++) 
@@ -109,13 +110,16 @@ function shellSort($array)
 	    	$array[$j] = $tmp;
         }
         $int = round($int/2.3);
+        $it++;
     }
+    return ["iterations" => $it, "array" => $array];
 }
 
 function quickSort($array)
 {
 	$low = array();
 	$grt = array();
+	$it = 0;
 	if(count($array) < 2)
 	{
 		return $array;
@@ -132,8 +136,10 @@ function quickSort($array)
 		{
 			$grt = $value;
 		}
+		$it++;
 	}
-	return array_merge(quickSort($low), array($pkey=>$p), quicksort($grt));
+	$array = array_merge(quickSort($low), array($pkey=>$p), quicksort($grt));
+	return ["iterations" => $it, "array" => $array];
 }
 
 function fusionSort($array)
@@ -173,6 +179,31 @@ function fusion($first, $second)
 	return $res;
 }
 
+function combSort($array)
+{
+	$cou = count($array);
+	$swap = true;
+	$it = 0;
+	while($cou > 1 || $swap)
+	{
+		if ($cou > 1) {
+			$cou /= 1.25;
+		}
+		$swap = false;
+		$i = 0;
+		while($i+$cou < count($array))
+		{
+			if ($array[$i] > $array[$i+$cou]) {
+				list($array[$i], $array[$i+$cou]) = array($array[$i+$cou],$array[$i]);
+				$swap = true;
+			}
+			$i++;
+			$it++;
+		}
+	}
+	return ["iterations" => $it, "array" => $array];
+}
+
 
 
 
@@ -198,6 +229,9 @@ if (isset($_POST["sort"])) {
 			break;
 		case 'fusion':
 			$sort = fusionSort($input);
+			break;
+		case 'comb':
+			$sort = combSort($input);
 			break;
 	}
 
